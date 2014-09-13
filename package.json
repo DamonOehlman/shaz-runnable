@@ -1,5 +1,5 @@
 {
-  "name": "shaz-example",
+  "name": "shaz-runnable",
   "version": "1.0.0",
   "description": "Shazam plugin for including some example code in your presentation'",
   "main": "index.js",
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/DamonOehlman/shaz-example/issues"
   },
-  "homepage": "https://github.com/DamonOehlman/shaz-example"
+  "homepage": "https://github.com/DamonOehlman/shaz-example",
+  "dependencies": {
+    "crel": "~2.1.1"
+  }
 }

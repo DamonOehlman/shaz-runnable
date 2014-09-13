@@ -1,0 +1,22 @@
+{
+  "name": "shaz-example",
+  "version": "1.0.0",
+  "description": "Shazam plugin for including some example code in your presentation'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DamonOehlman/shaz-example.git"
+  },
+  "keywords": [
+    "shazam"
+  ],
+  "author": "Damon Oehlman <damon.oehlman@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DamonOehlman/shaz-example/issues"
+  },
+  "homepage": "https://github.com/DamonOehlman/shaz-example"
+}

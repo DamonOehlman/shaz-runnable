@@ -1,6 +1,6 @@
 {
   "name": "shaz-runnable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shazam plugin for including a runnable example in your presentation, thanks to browser-module-sandbox and browserify-cdn",
   "main": "index.js",
   "scripts": {

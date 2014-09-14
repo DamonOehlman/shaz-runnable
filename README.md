@@ -6,7 +6,7 @@ A shazam plugin for creating runnable code fragments using
 
 [![NPM](https://nodei.co/npm/shaz-runnable.png)](https://nodei.co/npm/shaz-runnable/)
 
-
+[![experimental](https://img.shields.io/badge/stability-experimental-red.svg)](https://github.com/dominictarr/stability#experimental) 
 
 ## Example Usage
 

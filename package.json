@@ -1,12 +1,13 @@
 {
   "name": "shaz-runnable",
   "version": "1.0.0",
-  "description": "Shazam plugin for including some example code in your presentation'",
+  "description": "Shazam plugin for including a runnable example in your presentation, thanks to browser-module-sandbox and browserify-cdn",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "gendocs": "gendocs > README.md"
   },
+  "stability": "experimental",
   "repository": {
     "type": "git",
     "url": "https://github.com/DamonOehlman/shaz-example.git"

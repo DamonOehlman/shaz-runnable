@@ -61,9 +61,9 @@ module.exports = function(Slide, opts) {
     sandbox = createSandbox({
       cdn: (opts || {}).cdn,
       container: demoContainer,
-      iframeStyle: 'body, html { height: 100%; width: 100%; }',
-      iframeHead: '',
-      iframeBody: '',
+      iframeStyle: (opts || {}).iframeStyle || 'body, html { height: 100%; width: 100%; }',
+      iframeHead: (opts || {}).iframeHead || '',
+      iframeBody: (opts || {}).iframeBody || '',
       cacheOpts: {
         inMemory: true
       }
@@ -78,6 +78,8 @@ module.exports = function(Slide, opts) {
       .on('bundleEnd', function(html) {
         demoContainer.classList.remove('loading');
         demoContainer.classList.add('active');
+
+        sandbox.iframe.iframe.contentDocument.addEventListener('keydown', captureKeys(code));
       })
       .on('bundleError', function(err) {
         console.error('bundling error: ', err);

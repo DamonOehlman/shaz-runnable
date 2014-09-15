@@ -20,25 +20,28 @@ module.exports = function(Slide, opts) {
   ].join('\n');
 
   var sandbox;
-  var demoContainer = crel('div', {
-    id: 'shazam-democontainer'
-  });
+  var demoContainer = crel('div', { id: 'shazam-democontainer' },
+    crel('div', { class: 'loader' })
+  );
 
-  function captureKeys(el) {
-    el = el.contentWindow || el;
-
-    el.addEventListener('keydown', function(evt) {
+  function captureKeys(code) {
+    return function(evt) {
       switch (keycode(evt)) {
         case 'esc': {
           clearSandbox();
           break;
         }
 
+        case 'enter': {
+          runSample(code);
+          break;
+        }
+
         default: {
+          console.log(keycode(evt));
         }
       }
-      console.log('received key: ', keycode(evt));
-    });
+    };
   }
 
   function clearSandbox() {
@@ -75,8 +78,6 @@ module.exports = function(Slide, opts) {
       .on('bundleEnd', function(html) {
         demoContainer.classList.remove('loading');
         demoContainer.classList.add('active');
-
-        [].slice.call(demoContainer.querySelectorAll('iframe')).forEach(captureKeys);
       })
       .on('bundleError', function(err) {
         console.error('bundling error: ', err);
@@ -95,16 +96,28 @@ module.exports = function(Slide, opts) {
        ));
 
     var runLink = crel('a', 'Run');
+    var keyHandler = captureKeys(code);
 
     runLink.addEventListener('click', function() {
       runSample(code);
     });
 
-    return crel(
+    this.el.appendChild(crel(
       'div', { class: 'shazam-runnable' },
       codeContainer,
       runLink
-    );
+    ));
+
+    this.on('activate', function() {
+      document.addEventListener('keydown', keyHandler);
+    });
+
+    this.on('deactivate', function() {
+      clearSandbox();
+      document.removeEventListener('keydown', keyHandler);
+    });
+
+    return this;
   };
 
   insertcss((opts || {}).css || fs.readFileSync(__dirname + '/style.css'));
